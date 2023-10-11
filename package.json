@@ -1,6 +1,5 @@
 {
   "dependencies": {
-    "node-fetch": "^3.3.2",
     "telegraf": "^4.14.0"
   },
   "name": "juliobot",
@@ -13,7 +12,6 @@
   "keywords": [],
   "author": "Julio Reyes | www.jjrh92.dev",
   "license": "ISC",
-  "type": "module",
   "devDependencies": {
     "nodemon": "^3.0.1"
   }
