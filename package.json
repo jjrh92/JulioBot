@@ -1,0 +1,18 @@
+{
+  "dependencies": {
+    "telegraf": "^4.14.0"
+  },
+  "name": "juliobot",
+  "description": "Proyecto de bot para telegram con contenido personalizable.",
+  "version": "1.0.1",
+  "main": "JulioBot.js",
+  "scripts": {
+    "bot": "nodemon JulioBot.js"
+  },
+  "keywords": [],
+  "author": "Julio Reyes | www.jjrh92.dev",
+  "license": "ISC",
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  }
+}
