@@ -1,10 +1,10 @@
 const { Telegraf } = require ("telegraf");
-require("dotenv").config();
+require ("dotenv").config ();
 const bot = new Telegraf (process.env.TELEGRAM_TOKEN);
 
 bot.help ((ctx) => {
 
-    ctx.replyWithHTML (`<code>🎒🤖 BultoBot V-1.0.1\nComandos Disponibles:</code>\n<code>/metar "icao"</code>\n<code>/clima "ciudad"</code>`);
+    ctx.replyWithHTML (`<code>🎒🤖 BultoBot V-1.1.0\nComandos Disponibles:</code>\n<code>/metar "icao"</code>\n<code>/clima "ciudad"</code>\n<code>/gpt "consulta"</code>`);
 
 });
 
@@ -72,9 +72,7 @@ bot.command (["clima", "CLIMA", "Clima"], (ctx) => {
                 let feelslike = response.current.feelslike_c;
                 let visibility = response.current.vis_km;
 
-
                 ctx.replyWithHTML (`<code>🤖Tu solicitud de Clima ${ctx.from.first_name} ☁️✈️:</code>\n<code>La fecha y hora local en ${location} ${region} son las ${time}.Hacen ${temp}°C, y el estado actual es ${text} con vientos de ${wind} km/h en dirección ${windDir}.Presión Barometrica de ${pressure} milibares con ${humidity}% de humedad.Sensación termica de ${feelslike}°C y visibilidad de ${visibility}KM.</code>`);
-
     
             })
 
@@ -83,5 +81,43 @@ bot.command (["clima", "CLIMA", "Clima"], (ctx) => {
 
 });
 
+bot.command (["gpt", "GPT", "Gpt"], (ctx) => {
+
+    let userMessage = ctx.message.text.slice(5,10000);
+
+    if (userMessage.length < 4) {
+
+        ctx.replyWithHTML (`<code>🎒 Tu solicitud no pudo ser procesada, por favor ingresa Una consulta valida. Ejemplo "/gpt consulta"</code>`);
+
+    }
+
+    else {
+
+        const OpenAI = require("openai");
+        const openai = new OpenAI ({
+
+            apiKey: process.env.GPT_TOKEN,
+
+        });
+
+        const AskGPT = async () => {
+
+            const chatCompletion = await openai.chat.completions.create ({
+
+                model: "gpt-3.5-turbo",
+                messages: [{"role": "user", "content": userMessage,}],
+                max_tokens:2048
+
+            });
+
+            let reply = chatCompletion.choices[0].message.content;
+            ctx.replyWithHTML (`<code>${reply}</code>`);
+        }
+
+        AskGPT ();
+
+    }
+
+});
 
 bot.launch();
