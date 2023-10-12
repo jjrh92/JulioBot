@@ -1,28 +1,10 @@
 const { Telegraf } = require ("telegraf");
-
-const bot = new Telegraf ("6065874551:AAFpVTDm6c5xD-5mJzjfEqFVa0OVM4GnANo");
-
-bot.start ((ctx) => {
-
-    ctx.replyWithHTML (`<code>🤖 BultoBot V-1.0.1 🤖</code>\n<code>Iniciando 1%............</code>\n<code>.........Terminando 100%</code>\n<code>🛸🇻🇪🇨🇱🇦🇷🇵🇦🇨🇴👽</code>\n<code>Usa /help</code>`);
-
-});
+require("dotenv").config();
+const bot = new Telegraf (process.env.TELEGRAM_TOKEN);
 
 bot.help ((ctx) => {
 
-    ctx.replyWithHTML (`<code>Comandos Disponibles:</code>\n<code>/metar "icao"</code>\n<code>/clima "ciudad"</code>`);
-
-});
-
-bot.hears ("🏹", ctx => {
-
-    ctx.replyWithHTML (`<code>"No es la flecha sino el indio" — ${ctx.from.username+ "."}</code>`);
-
-});
-
-bot.mention ("BultoBot", ctx => {
-
-    ctx.replyWithHTML (`<code>Debes ejecutar "/help" para ver los comandos disponibles.\nNo seas 🎒 ${ctx.from.first_name}.</code>`);
+    ctx.replyWithHTML (`<code>🎒🤖 BultoBot V-1.0.1\nComandos Disponibles:</code>\n<code>/metar "icao"</code>\n<code>/clima "ciudad"</code>`);
 
 });
 
@@ -38,7 +20,7 @@ bot.command (["metar", "METAR", "Metar"], (ctx) => {
 
     else {
 
-        let url = `https://api.checkwx.com/bot/metar/${userMessage}?x-api-key=a7691d10f1fb4c06b710633924`;
+        let url = `https://api.checkwx.com/bot/metar/${userMessage}?x-api-key=${process.env.METAR_TOKEN}`;
 
     
         fetch (url) 
@@ -46,7 +28,7 @@ bot.command (["metar", "METAR", "Metar"], (ctx) => {
             
             .then (response => {
     
-                ctx.replyWithHTML (`<code>🤖Gracias por tu solicitud ${ctx.from.first_name} ☁️✈️:</code><code>\n${response}</code>`);
+                ctx.replyWithHTML (`<code>🤖Tu solicitud de METAR ${ctx.from.first_name} ☁️✈️:</code><code>\n${response}</code>`);
     
             })
 
@@ -70,7 +52,7 @@ bot.command (["clima", "CLIMA", "Clima"], (ctx) => {
 
     else {
 
-        let url = `https://api.weatherapi.com/v1/current.json?key=96d2149d358e43d8a82220554231110&q=${userMessage}&aqi=no&lang=es`;
+        let url = `https://api.weatherapi.com/v1/current.json?key=${process.env.WEATHER_TOKEN}&q=${userMessage}&aqi=no&lang=es`;
 
 
         fetch (url) 
@@ -91,8 +73,8 @@ bot.command (["clima", "CLIMA", "Clima"], (ctx) => {
                 let visibility = response.current.vis_km;
 
 
+                ctx.replyWithHTML (`<code>🤖Tu solicitud de Clima ${ctx.from.first_name} ☁️✈️:</code>\n<code>La fecha y hora local en ${location} ${region} son las ${time}.Hacen ${temp}°C, y el estado actual es ${text} con vientos de ${wind} km/h en dirección ${windDir}.Presión Barometrica de ${pressure} milibares con ${humidity}% de humedad.Sensación termica de ${feelslike}°C y visibilidad de ${visibility}KM.</code>`);
 
-                ctx.replyWithHTML (`<code>☁️🌀 Aca tienes el reporte solicitado: ${ctx.from.first_name+ ":"}\n\nLa fecha y hora local en ${location} ${region} son las ${time}.\nHacen ${temp}°C, y el estado actual es ${text} con vientos de ${wind} km/h en dirección ${windDir}.\nPresión Barometrica de ${pressure} milibares con ${humidity}% de humedad.Sensación termica de ${feelslike}°C y visibilidad de ${visibility}KM.</code>`);
     
             })
 
@@ -100,5 +82,6 @@ bot.command (["clima", "CLIMA", "Clima"], (ctx) => {
 
 
 });
+
 
 bot.launch();

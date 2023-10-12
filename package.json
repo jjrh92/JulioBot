@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "dotenv": "^16.3.1",
     "telegraf": "^4.14.0"
   },
   "name": "juliobot",
@@ -7,12 +8,9 @@
   "version": "1.0.1",
   "main": "JulioBot.js",
   "scripts": {
-    "bot": "nodemon JulioBot.js"
+    "bot": "node JulioBot.js"
   },
   "keywords": [],
   "author": "Julio Reyes | www.jjrh92.dev",
-  "license": "ISC",
-  "devDependencies": {
-    "nodemon": "^3.0.1"
-  }
+  "license": "ISC"
 }
