@@ -1,6 +1,6 @@
 const express = require('express')
 const app = express()
-const port = 3000
+const port = 3001
 
 const { Telegraf, Input } = require ("telegraf");
 require ("dotenv").config ();
@@ -138,5 +138,5 @@ bot.command (["gpt", "GPT", "Gpt"], (ctx) => {
 bot.launch();
 
 app.listen(port, () => {
-  console.log(`Bulto bot listening on port ${port}`)
+  console.log(`BultoBot listening on port ${port}`)
 })
