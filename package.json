@@ -10,7 +10,7 @@
   "version": "1.1.0",
   "main": "JulioBot.js",
   "scripts": {
-    "start": "node JulioBot.js"
+    "start": "node app.js"
   },
   "keywords": [],
   "author": "Julio Reyes | www.jjrh92.dev",
