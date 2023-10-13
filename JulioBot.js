@@ -1,3 +1,14 @@
+const express = require('express')
+const app = express()
+
+app.get('/', (req, res) => {
+
+    res.send('Hello World!');
+    
+});
+
+const port = 3001
+
 const { Telegraf, Input } = require ("telegraf");
 require ("dotenv").config ();
 const bot = new Telegraf (process.env.TELEGRAM_TOKEN);
@@ -34,6 +45,10 @@ bot.command (["metar", "METAR", "Metar"], (ctx) => {
             })
 
     }
+
+
+
+
 
 });
 
@@ -127,4 +142,8 @@ bot.command (["gpt", "GPT", "Gpt"], (ctx) => {
 
 // });
 
-bot.launch ();
+bot.launch();
+
+app.listen(port, () => {
+  console.log(`BultoBot listening on port ${port}`)
+})
