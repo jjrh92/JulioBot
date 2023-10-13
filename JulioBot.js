@@ -10,7 +10,9 @@ app.get('/', (req, res) => {
 const port = 3000
 
 const { Telegraf, Input } = require ("telegraf");
+
 require ("dotenv").config ();
+
 const bot = new Telegraf (process.env.TELEGRAM_TOKEN);
 
 bot.help ((ctx) => {
@@ -34,7 +36,6 @@ bot.command (["metar", "METAR", "Metar"], (ctx) => {
 
         let url = `https://api.checkwx.com/bot/metar/${userMessage}?x-api-key=${process.env.METAR_TOKEN}`;
 
-    
         fetch (url) 
             .then((response) => response.text())
             
@@ -45,10 +46,6 @@ bot.command (["metar", "METAR", "Metar"], (ctx) => {
             })
 
     }
-
-
-
-
 
 });
 
@@ -90,7 +87,6 @@ bot.command (["clima", "CLIMA", "Clima"], (ctx) => {
             })
 
     }
-
 
 });
 
@@ -144,6 +140,8 @@ bot.command (["gpt", "GPT", "Gpt"], (ctx) => {
 
 bot.launch();
 
-app.listen(port, () => {
+app.listen (port, () => {
+
   console.log(`BultoBot listening on port ${port}`)
+
 })
