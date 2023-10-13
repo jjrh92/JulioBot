@@ -7,7 +7,7 @@ app.get('/', (req, res) => {
     
 });
 
-const port = 3001
+const port = 3000
 
 const { Telegraf, Input } = require ("telegraf");
 require ("dotenv").config ();
