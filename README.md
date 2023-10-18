@@ -16,7 +16,7 @@
 <h3 align="center">Welcome - Bienvenid@</h3>
 
   <p align=center">
-    JulioBot
+    JulioBot (Telegram)
     <br />
     <br />
     <a href="https://t.me/BultoBot/">View Demo - Ver Demo</a>
