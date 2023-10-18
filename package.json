@@ -7,7 +7,7 @@
   },
   "name": "juliobot",
   "description": "Proyecto de bot para telegram con contenido personalizable.",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "main": "JulioBot.js",
   "scripts": {
     "start": "node JulioBot.js"
