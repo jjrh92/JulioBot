@@ -2,14 +2,14 @@
 
 <div align="center">
 
-![Github Contributors](https://img.shields.io/github/contributors/jjrh92/JulioBot)
-![Github Stars](https://img.shields.io/github/stars/jjrh92/JulioBot)
-![Github Issues](https://img.shields.io/github/issues-raw/jjrh92/JulioBot)
+![Github Contributors](https://img.shields.io/github/contributors/jjrh92/JulioBot_Telegram)
+![Github Stars](https://img.shields.io/github/stars/jjrh92/JulioBot_Telegram)
+![Github Issues](https://img.shields.io/github/issues-raw/jjrh92/JulioBot_Telegram)
 
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
-  <a href="https://github.com/jjrh92/JulioBot">
+  <a href="https://github.com/jjrh92/JulioBot_Telegram">
     <img src="https://img.icons8.com/plasticine/100/futurama-bender.png" alt="Logo" width="200" height="200">
   </a>
 
@@ -21,9 +21,9 @@
     <br />
     <a href="https://t.me/BultoBot/">View Demo - Ver Demo</a>
     ·
-    <a href="https://github.com/jjrh92/JulioBot/issues">Report Bug - Reportar Bug</a>
+    <a href="https://github.com/jjrh92/JulioBot_Telegram/issues">Report Bug - Reportar Bug</a>
     ·
-    <a href="https://github.com/jjrh92/JulioBot/issues">Request Feature - Pedir Feature</a>
+    <a href="https://github.com/jjrh92/JulioBot_Telegram/issues">Request Feature - Pedir Feature</a>
   </p>
 </div>
 
@@ -54,7 +54,7 @@ Install the project locally - Instalar el proyecto localmente.
 
 Clone the repo and run the command npm install, then run the command npm run dev
    ```sh
-   git clone https://github.com/jjrh92/JulioBot.git
+   git clone https://github.com/jjrh92/JulioBot_Telegram.git
    ```
 
 Si gustas tambien puedes ver el proyecto desplegado usando el enlace "View demo" de arriba.
