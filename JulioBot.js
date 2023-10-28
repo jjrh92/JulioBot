@@ -18,14 +18,14 @@ const bot = new Telegraf (process.env.TELEGRAM_TOKEN);
 bot.start ((ctx) => {
 
     ctx.sendChatAction ("typing");
-    ctx.replyWithHTML (`<code>🎒🤖 BultoBot V-1.2.0\nComandos Disponibles:</code>\n<code>/metar "icao"</code>\n<code>/clima "ciudad"</code>\n<code>/gpt "consulta"</code>`);
+    ctx.replyWithHTML (`<code>🎒🤖 BultoBot V-1.3.0\nComandos Disponibles:</code>\n<code>/metar "icao"</code>\n<code>/taf "icao"</code>\n<code>/clima "ciudad"</code>\n<code>/gpt "consulta"</code>`);
 
 });
 
 bot.help ((ctx) => {
 
     ctx.sendChatAction ("typing");
-    ctx.replyWithHTML (`<code>🎒🤖 BultoBot V-1.2.0\nComandos Disponibles:</code>\n<code>/metar "icao"</code>\n<code>/clima "ciudad"</code>\n<code>/gpt "consulta"</code>`);
+    ctx.replyWithHTML (`<code>🎒🤖 BultoBot V-1.3.0\nComandos Disponibles:</code>\n<code>/metar "icao"</code>\n<code>/taf "icao"</code>\n<code>/clima "ciudad"</code>\n<code>/gpt "consulta"</code>`);
 
 });
 
@@ -36,7 +36,7 @@ bot.command (["metar", "METAR", "Metar"], (ctx) => {
 
     if (userMessage.length < 4) {
 
-        ctx.replyWithHTML (`<code>🎒 Tu solicitud no pudo ser procesada, recuerda que el codigo ICAO contiene 4 digitos. Ejemplo "/metar SVMI"</code>`);
+        ctx.replyWithHTML (`<code>🎒 Tu solicitud no pudo ser procesada, recuerda que el codigo ICAO contiene 4 digitos. Ejemplo "/metar SVBS"</code>`);
 
     }
 
@@ -51,6 +51,35 @@ bot.command (["metar", "METAR", "Metar"], (ctx) => {
     
                 ctx.replyWithHTML (`<code>🤖Tu solicitud de METAR ${ctx.from.first_name} ☁️✈️:</code><code>\n${response}</code>`);
     
+            })
+
+    }
+
+});
+
+bot.command (["taf", "TAF", "Taf"], (ctx) => {
+    
+    ctx.sendChatAction ("typing");
+    let userMessage = ctx.message.text.slice(4,11).toUpperCase();
+
+    if (userMessage.length < 4) {
+
+        ctx.replyWithHTML (`<code>🎒 Tu solicitud no pudo ser procesada, recuerda que el codigo ICAO contiene 4 digitos. Ejemplo "/taf SVBS"</code>`);
+
+    }
+
+    else {
+
+        let url = `https://api.checkwx.com/taf/${userMessage}/?x-api-key=${process.env.METAR_TOKEN}`;
+
+        fetch (url) 
+            .then((response) => response.json ())
+            .then (response => {
+
+                let rawData = (response.data);
+
+                ctx.replyWithHTML (`<code>🤖Tu solicitud de TAF ${ctx.from.first_name} ☁️✈️:</code><code>\n${rawData}</code>`);
+        
             })
 
     }
@@ -154,6 +183,6 @@ bot.launch();
 
 app.listen (port, () => {
 
-  console.log(`BultoBot V-1.2.0 listening on port ${port}`)
+  console.log(`BultoBot V-1.3.0 listening on port ${port}`)
 
 })
