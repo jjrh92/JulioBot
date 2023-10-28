@@ -33,7 +33,7 @@
 About The Project <img src="https://media2.giphy.com/media/4ZrRpqbSaWoyZYRoCd/giphy.gif" width="30px"> Acerca del Proyecto
 </h1>
 
-Telegram bot that connects with OpenAI to respond user questions using /gpt. It can give you a METAR with the /metar command and weather with /clima command.
+Telegram bot that connects with OpenAI to respond user questions using /gpt. It can give you a METAR with the /metar command, TAF with the /taf command, and weather with /clima command
 
 Bot de Telegram que se conecta con OpenAI para responder preguntas de los usuarios usando /gpt. Puede proporcionarle un METAR con el comando /metar y el clima con el comando /clima.
 
@@ -65,6 +65,7 @@ Usage <img src="https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExN2lvcWx2Ynpia3
 </h1>
 
 /metar "icao"
+/taf "icao"
 /clima "city"
 /gpt "querie"
 
