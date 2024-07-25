@@ -182,7 +182,7 @@ bot.command (["gpt", "GPT", "Gpt"], async ctx => {
 
 
 
-// Schedule NASA APOD execution at 10 PM every day (04:00 zulu time)
+// Schedule NASA APOD execution at 11 PM every day (04:00 zulu time)
 
 cron.schedule('0 4 * * *', () => {
     const nasaURL = `https://api.nasa.gov/planetary/apod?api_key=${process.env.NASA_TOKEN}`;
