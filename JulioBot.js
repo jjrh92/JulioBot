@@ -204,7 +204,7 @@ cron.schedule('0 22 * * *', () => {
         });
 });
 
-// Schedule Chuck's Joke execution at 6 AM every day
+// Schedule Chuck's Joke execution at 7 AM every day
 
 cron.schedule('0 7 * * *', () => {
     const jokesURL = `https://api.chucknorris.io/jokes/random`;
