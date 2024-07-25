@@ -1,5 +1,6 @@
 const express = require ('express');
 const app = express ();
+const cron = require('node-cron');
 
 app.get('/', (req, res) => {
 
@@ -18,14 +19,14 @@ const bot = new Telegraf (process.env.TELEGRAM_TOKEN);
 bot.start ((ctx) => {
 
     ctx.sendChatAction ("typing");
-    ctx.replyWithHTML (`<code>🎒🤖 BultoBot V-1.3.0\nComandos Disponibles:</code>\n<code>/metar "icao"</code>\n<code>/taf "icao"</code>\n<code>/clima "ciudad"</code>\n<code>/gpt "consulta"</code>`);
+    ctx.replyWithHTML (`<code>🎒🤖 BultoBot V-1.4.0\nComandos Disponibles:</code>\n<code>/metar "icao"</code>\n<code>/taf "icao"</code>\n<code>/clima "ciudad"</code>\n<code>/gpt "consulta"</code>`);
 
 });
 
 bot.help ((ctx) => {
 
     ctx.sendChatAction ("typing");
-    ctx.replyWithHTML (`<code>🎒🤖 BultoBot V-1.3.0\nComandos Disponibles:</code>\n<code>/metar "icao"</code>\n<code>/taf "icao"</code>\n<code>/clima "ciudad"</code>\n<code>/gpt "consulta"</code>`);
+    ctx.replyWithHTML (`<code>🎒🤖 BultoBot V-1.4.0\nComandos Disponibles:</code>\n<code>/metar "icao"</code>\n<code>/taf "icao"</code>\n<code>/clima "ciudad"</code>\n<code>/gpt "consulta"</code>`);
 
 });
 
@@ -179,10 +180,50 @@ bot.command (["gpt", "GPT", "Gpt"], async ctx => {
 
 // });
 
+
+
+// Schedule NASA APOD execution at 10 PM every day
+
+cron.schedule('0 22 * * *', () => {
+    const nasaURL = `https://api.nasa.gov/planetary/apod?api_key=${process.env.NASA_TOKEN}`;
+    fetch(nasaURL)
+        .then((response) => response.text())
+        .then((response) => {
+            let parsedResponse = JSON.parse(response);
+            let imageTitle = parsedResponse.title;
+            let imageURL = parsedResponse.url;
+            let date = parsedResponse.date;
+            let dateParts = date.split("-");
+            let formattedDate = `${dateParts[2]}-${dateParts[1]}-${dateParts[0]}`;
+            let author = parsedResponse.copyright;
+
+            bot.telegram.sendPhoto(-1001212168810, imageURL, {
+                caption: `<code>🎒📷🔭🚀🪐🛰️🌌☄️🛸🌕📡🪐👽\nLa Imagen de hoy ${formattedDate}.\n"${imageTitle}" de ${author}.\nBuenas Noches</code>`,
+                parse_mode: 'HTML',
+            });
+        });
+});
+
+// Schedule Chuck's Joke execution at 6 AM every day
+
+cron.schedule('0 7 * * *', () => {
+    const jokesURL = `https://api.chucknorris.io/jokes/random`;
+    fetch(jokesURL)
+        .then((response) => response.text())
+        .then((response) => {
+            let parsedResponse = JSON.parse(response);
+            let joke = parsedResponse.value;
+            bot.telegram.sendMessage(-1001212168810, `<code>☀️Buenos Dias Bultos🎒\n\n🧔${joke}😹\n\nQue el dia de hoy sea mejor que ayer.</code>`, { parse_mode: 'HTML' });
+        });
+});
+
+// cron.schedule('*/4 * * * * *', () => { 
+// Test every 4 seconds
+
 bot.launch();
 
 app.listen (port, () => {
 
-  console.log(`BultoBot V-1.3.0 listening on port ${port}`)
+  console.log(`BultoBot V-1.4.0 listening on port ${port}`)
 
 })
