@@ -33,9 +33,9 @@
 About The Project <img src="https://media2.giphy.com/media/4ZrRpqbSaWoyZYRoCd/giphy.gif" width="30px"> Acerca del Proyecto
 </h1>
 
-Telegram bot that connects with OpenAI to respond user questions using /gpt. It can give you a METAR with the /metar command, TAF with the /taf command, and weather with /clima command
+Telegram bot that connects with OpenAI to respond user questions using /gpt. It can give you a METAR with the /metar command, TAF with the /taf command, and weather with /clima command. It also supports a notifications system that allows you to be updated via telegram when somebody connects to a voice channel in Discord.
 
-Bot de Telegram que se conecta con OpenAI para responder preguntas de los usuarios usando /gpt. Puede proporcionarle un METAR con el comando /metar y el clima con el comando /clima.
+Bot de Telegram que se conecta con OpenAI para responder preguntas de los usuarios usando /gpt. Puede proporcionarle un METAR con el comando /metar y el clima con el comando /clima. Tambien soporta un sistema de notificaciones que avisa cuando un usuario se une a un canal de voz de discord.
 
 
 <h1 align="center"> 

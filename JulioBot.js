@@ -1,6 +1,20 @@
+require ("dotenv").config ();
+
 const express = require ('express');
 const app = express ();
 const cron = require('node-cron');
+const { Telegraf, Input } = require ("telegraf");
+const { Client, GatewayIntentBits } = require('discord.js');
+const axios = require('axios');
+
+// Initialize Discord client
+const discordClient = new Client({
+    intents: [
+        GatewayIntentBits.Guilds,
+        GatewayIntentBits.GuildVoiceStates,
+    ],
+});
+
 
 app.get('/', (req, res) => {
 
@@ -10,24 +24,48 @@ app.get('/', (req, res) => {
 
 const port = 3000;
 
-const { Telegraf, Input } = require ("telegraf");
-
-require ("dotenv").config ();
-
+// Telegram Bot Token
 const bot = new Telegraf (process.env.TELEGRAM_TOKEN);
+// Discord Bot Token
+const discordToken = process.env.DISCORD_TOKEN;
+// Telegram Chat ID
+const telegramChatId = process.env.TELEGRAM_CHAT_ID;
 
 bot.start ((ctx) => {
 
     ctx.sendChatAction ("typing");
-    ctx.replyWithHTML (`<code>🎒🤖 BultoBot V-1.4.0\nComandos Disponibles:</code>\n<code>/metar "icao"</code>\n<code>/taf "icao"</code>\n<code>/clima "ciudad"</code>\n<code>/gpt "consulta"</code>`);
+    ctx.replyWithHTML (`<code>🎒🤖 BultoBot V-1.5.0\nComandos Disponibles:</code>\n<code>/metar "icao"</code>\n<code>/taf "icao"</code>\n<code>/clima "ciudad"</code>\n<code>/gpt "consulta"</code>`);
 
 });
 
 bot.help ((ctx) => {
 
     ctx.sendChatAction ("typing");
-    ctx.replyWithHTML (`<code>🎒🤖 BultoBot V-1.4.0\nComandos Disponibles:</code>\n<code>/metar "icao"</code>\n<code>/taf "icao"</code>\n<code>/clima "ciudad"</code>\n<code>/gpt "consulta"</code>`);
+    ctx.replyWithHTML (`<code>🎒🤖 BultoBot V-1.5.0\nComandos Disponibles:</code>\n<code>/metar "icao"</code>\n<code>/taf "icao"</code>\n<code>/clima "ciudad"</code>\n<code>/gpt "consulta"</code>`);
 
+});
+
+// Function to send message to Telegram
+const sendTelegramMessage = (message) => {
+    const url = `https://api.telegram.org/bot${process.env.TELEGRAM_TOKEN}/sendMessage`;
+    axios.post(url, {
+        chat_id: telegramChatId,
+        text: message,
+        parse_mode: 'HTML',
+    }).catch(error => console.error('Error sending message to Telegram:', error));
+};
+
+
+// Discord bot event listener for voice state updates
+discordClient.on('voiceStateUpdate', (oldState, newState) => {
+    const user = newState.member.user;
+    if (!oldState.channelId && newState.channelId) {
+        // User joined a voice channel
+        sendTelegramMessage(`<code>🤖\n\nATENCIÓN:${user.username} se ha conectado al canal de voz ${newState.channel.name}.\n\n👋🏻</code>`);
+    } else if (oldState.channelId && !newState.channelId) {
+        // User left a voice channel
+        sendTelegramMessage(`<code>🤖\n\nATENCIÓN:${user.username} se ha desconectado del canal de voz ${oldState.channel.name}.\n\n💨</code>`);
+    }
 });
 
 bot.command (["metar", "METAR", "Metar"], (ctx) => {
@@ -180,8 +218,6 @@ bot.command (["gpt", "GPT", "Gpt"], async ctx => {
 
 // });
 
-
-
 // Schedule NASA APOD execution at 11 PM every day (04:00 zulu time)
 
 cron.schedule('0 3 * * *', () => {
@@ -220,10 +256,11 @@ cron.schedule('0 11 * * *', () => {
 // cron.schedule('*/4 * * * * *', () => { 
 // Test every 4 seconds
 
+discordClient.login(discordToken);
 bot.launch();
 
 app.listen (port, () => {
 
-  console.log(`BultoBot V-1.4.0 listening on port ${port}`)
+  console.log(`BultoBot V-1.5.0 listening on port ${port}`)
 
 })
