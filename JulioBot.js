@@ -61,10 +61,10 @@ discordClient.on('voiceStateUpdate', (oldState, newState) => {
     const user = newState.member.user;
     if (!oldState.channelId && newState.channelId) {
         // User joined a voice channel
-        sendTelegramMessage(`<code>🤖\n\nATENCIÓN:${user.username} se ha conectado al canal de voz ${newState.channel.name}.\n\n👋🏻</code>`);
+        sendTelegramMessage(`<code>🤖\n\nATENCIÓN: ${user.username} se ha conectado al canal de voz ${newState.channel.name}.\n\n👋🏻</code>`);
     } else if (oldState.channelId && !newState.channelId) {
         // User left a voice channel
-        sendTelegramMessage(`<code>🤖\n\nATENCIÓN:${user.username} se ha desconectado del canal de voz ${oldState.channel.name}.\n\n💨</code>`);
+        sendTelegramMessage(`<code>🤖\n\nATENCIÓN: ${user.username} se ha desconectado del canal de voz ${oldState.channel.name}.\n\n💨</code>`);
     }
 });
 
