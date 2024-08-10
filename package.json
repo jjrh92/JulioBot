@@ -10,7 +10,7 @@
   },
   "name": "juliobot",
   "description": "Proyecto de bot para Telegram  y Discord con contenido personalizable.",
-  "version": "1.5.0",
+  "version": "1.5.1",
   "main": "JulioBot.js",
   "scripts": {
     "start": "node JulioBot.js"
