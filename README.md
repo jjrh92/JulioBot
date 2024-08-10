@@ -33,16 +33,16 @@
 About The Project <img src="https://media2.giphy.com/media/4ZrRpqbSaWoyZYRoCd/giphy.gif" width="30px"> Acerca del Proyecto
 </h1>
 
-Telegram bot that connects with OpenAI to respond user questions using /gpt. It can give you a METAR with the /metar command, TAF with the /taf command, and weather with /clima command. It also supports a notifications system that allows you to be updated via telegram when somebody connects to a voice channel in Discord.
+Telegram bot that connects with OpenAI to respond user questions using /gpt. It can give you a METAR with the /metar command, TAF with the /taf command, and weather with /clima command. It also supports a notifications system that allows you to be contacted via telegram when somebody connects to a voice channel in Discord. It also sends 2 messages a day to said telegram chat/or group chat. One with a morning joke (good morning), and one with a NASA Picture of the Day for the good night. The content of these 2 messages are totally random and are fetched from 2 different API calls.
 
-Bot de Telegram que se conecta con OpenAI para responder preguntas de los usuarios usando /gpt. Puede proporcionarle un METAR con el comando /metar y el clima con el comando /clima. Tambien soporta un sistema de notificaciones que avisa cuando un usuario se une a un canal de voz de discord.
+Bot de Telegram que se conecta con OpenAI para responder preguntas de los usuarios usando /gpt. Puede proporcionarle un METAR con el comando /metar y el clima con el comando /clima. Tambien soporta un sistema de notificaciones que avisa por Telegram cuando un usuario se une a un canal de voz de Discord. Ademas envia 2 mensajes al dia a dicho chat/grupo de Telegram. Uno en la mañana con una broma de buenos dias y el otro en la noche con una foto diaria de la NASA para las buenas noches. El contenido de estos 2 mensajes son aleatorios y obtenidos de 2 diferentes llamadas a dichas APIs.
 
 
 <h1 align="center"> 
 Built With <img src="https://media0.giphy.com/media/uhQuegHFqkVYuFMXMQ/giphy.gif" width="30px">Hecho Con
 </h1>
 
-NodeJS, express, openai, dontenv, telegraf.
+NodeJS, Axios, Discord.js, Express, Openai, dontenv, telegraf, checkwx, NASA (APOD).
 
 <!-- GETTING STARTED -->
 <h1 align="center"> 
@@ -54,7 +54,7 @@ Install the project locally - Instalar el proyecto localmente.
 
 Clone the repo and run the command npm install, then run the command npm run dev
    ```sh
-   git clone https://github.com/jjrh92/JulioBot_Telegram.git
+   git clone https://github.com/jjrh92/JulioBot.git
    ```
 
 Si gustas tambien puedes ver el proyecto desplegado usando el enlace "View demo" de arriba.

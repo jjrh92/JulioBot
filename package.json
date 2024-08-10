@@ -9,7 +9,7 @@
     "telegraf": "^4.16.3"
   },
   "name": "juliobot",
-  "description": "Proyecto de bot para Telegram  y Discord con contenido personalizable.",
+  "description": "Bot para Telegram  y Discord con contenido personalizable.",
   "version": "1.5.1",
   "main": "JulioBot.js",
   "scripts": {
