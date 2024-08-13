@@ -9,8 +9,8 @@
     "telegraf": "^4.16.3"
   },
   "name": "juliobot",
-  "description": "Bot para Telegram  y Discord con contenido personalizable.",
-  "version": "1.5.1",
+  "description": "Bot para Telegram y Discord con contenido personalizable.",
+  "version": "1.5.2",
   "main": "JulioBot.js",
   "scripts": {
     "start": "node JulioBot.js"

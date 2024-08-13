@@ -27,14 +27,14 @@ const telegramChatId = process.env.TELEGRAM_CHAT_ID;
 bot.start((ctx) => {
   ctx.sendChatAction("typing");
   ctx.replyWithHTML(
-    `<code>🎒🤖 BultoBot V-1.5.1\nComandos Disponibles:</code>\n<code>/metar "icao"</code>\n<code>/taf "icao"</code>\n<code>/clima "ciudad"</code>\n<code>/gpt "consulta"</code>`
+    `<code>🎒🤖 BultoBot V-1.5.2\nComandos Disponibles:</code>\n<code>/metar "icao"</code>\n<code>/taf "icao"</code>\n<code>/clima "ciudad"</code>\n<code>/gpt "consulta"</code>`
   );
 });
 
 bot.help((ctx) => {
   ctx.sendChatAction("typing");
   ctx.replyWithHTML(
-    `<code>🎒🤖 BultoBot V-1.5.1\nComandos Disponibles:</code>\n<code>/metar "icao"</code>\n<code>/taf "icao"</code>\n<code>/clima "ciudad"</code>\n<code>/gpt "consulta"</code>`
+    `<code>🎒🤖 BultoBot V-1.5.2\nComandos Disponibles:</code>\n<code>/metar "icao"</code>\n<code>/taf "icao"</code>\n<code>/clima "ciudad"</code>\n<code>/gpt "consulta"</code>`
   );
 });
 
@@ -202,7 +202,7 @@ cron.schedule("0 3 * * *", () => {
       let author = parsedResponse.copyright;
 
       bot.telegram.sendPhoto(-1001212168810, imageURL, {
-        caption: `<code>🎒📷🔭🚀🪐🛰️🌌☄️🛸🌕📡🪐\nLa Imagen de hoy ${formattedDate}.\n"${imageTitle}".\nBuenas Noches</code>`,
+        caption: `<code>🎒📷🚀🪐🛰️🌌☄️🛸🌕📡🪐\n\nNASA's APOD (Astronomy Picture of the Day) para hoy ${formattedDate}.\n"${imageTitle}".\n\nBuenas Noches🌙</code>`,
         parse_mode: "HTML",
       });
     });
@@ -232,5 +232,5 @@ discordClient.login(discordToken);
 bot.launch();
 
 app.listen(port, () => {
-  console.log(`BultoBot V-1.5.1 listening on port ${port}`);
+  console.log(`BultoBot V-1.5.2 listening on port ${port}`);
 });

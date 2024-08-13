@@ -37,7 +37,6 @@ Telegram bot that connects with OpenAI to respond user questions using /gpt. It 
 
 Bot de Telegram que se conecta con OpenAI para responder preguntas de los usuarios usando /gpt. Puede proporcionarle un METAR con el comando /metar y el clima con el comando /clima. Tambien soporta un sistema de notificaciones que avisa por Telegram cuando un usuario se une a un canal de voz de Discord. Ademas envia 2 mensajes al dia a dicho chat/grupo de Telegram. Uno en la mañana con una broma de buenos dias y el otro en la noche con una foto diaria de la NASA para las buenas noches. El contenido de estos 2 mensajes son aleatorios y obtenidos de 2 diferentes llamadas a dichas APIs.
 
-
 <h1 align="center"> 
 Built With <img src="https://media0.giphy.com/media/uhQuegHFqkVYuFMXMQ/giphy.gif" width="30px">Hecho Con
 </h1>
