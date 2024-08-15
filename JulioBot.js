@@ -202,7 +202,7 @@ cron.schedule("0 3 * * *", () => {
       let author = parsedResponse.copyright;
 
       bot.telegram.sendPhoto(-1001212168810, imageURL, {
-        caption: `<code>🎒📷🚀🪐🛰️🌌☄️🛸🌕📡🪐\n\nNASA's APOD (Astronomy Picture of the Day) para hoy ${formattedDate}.\n"${imageTitle}".\n\nBuenas Noches🌙</code>`,
+        caption: `<code>🎒📷🚀🪐🛰️🌌☄️🛸🌕📡🪐\n\nNASA's APOD (Astronomy Picture of the Day) para hoy ${formattedDate}.\n\n"${imageTitle}".\n\nBuenas Noches</code>`,
         parse_mode: "HTML",
       });
     });
@@ -219,7 +219,7 @@ cron.schedule("0 11 * * *", () => {
       let joke = parsedResponse.value;
       bot.telegram.sendMessage(
         -1001212168810,
-        `<code>☀️Buenos Dias Bultos🎒\n\n🧔${joke}😹\n\nQue el dia de hoy sea mejor que ayer.</code>`,
+        `<code>☀️Buenos Dias🎒\n\n🧔${joke}😹\n\nQue el dia de hoy sea mejor que ayer.</code>`,
         { parse_mode: "HTML" }
       );
     });
